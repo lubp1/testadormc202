@@ -1,7 +1,6 @@
 #!/bin/bash
-read -p "Insira o número do lab: " numero
 
-$(gcc lab$numero.c -o lab$numero)
+$(gcc lab.c -o lab)
 
 if [ $? -ne 0 ]
 	then
@@ -16,7 +15,7 @@ for file in testes/*.in
 do
 	echo Teste $file
 	file="${file%.*}"
-	./lab$numero < $file.in > $file.res
+	./lab < $file.in > $file.res
 	$(diff $file.out $file.res > diff.txt)
 
 	if [ $? -eq 0 ]
